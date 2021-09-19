@@ -25,6 +25,4 @@ for x in range(1, 11): # row 10줄
         ws.cell(row=x, column=y, value=index) 
         index += 1
 
-
-
 wb.save("Sample.xlsx")
