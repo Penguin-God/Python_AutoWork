@@ -9,8 +9,6 @@ ws.append(["번호", "수학", "영어"])
 for i in range(1, 11):
     ws.append([i, randint(0,100), randint(0,100)])
 
-wb.save("Sample.xlsx")
-
 column_B = ws["C"] # C컬럼의 데이터의 객체 정보를 가져옴(값이 있는거만)
 
 # B부터 C컬럼까지의 데이터를 리스트 형식으로 가져옴 (한 줄당 리스트에 데이터 하나씩 추가)
@@ -46,4 +44,4 @@ anyRowScore = ws[2:ws.max_row] # row 2 ~ 마지막 줄 까지의 데이터 (값 
 for row in ws.iter_rows(max_row=9, min_col=2, max_col=4):
     print(row[0].value, row[1].value) # 가져온 row 중 1,2번째 인덱스의 값(B,C) 출력
 
-
+wb.save("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Excel/File/Sample.xlsx")

@@ -11,7 +11,7 @@ copySheet.title = "Good Copy"
 
 print(wb.sheetnames) # 모든 시트 이름 확인
 
-wb.save("Sample.xlsx")
+wb.save("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Excel/File/Sample.xlsx")
 wb.close()
 
 

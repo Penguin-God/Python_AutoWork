@@ -1,5 +1,5 @@
 from openpyxl import load_workbook
-wb = load_workbook("Sample.xlsx")
+wb = load_workbook("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Excel/File/Sample.xlsx")
 ws = wb.active
 
 # max_row는 값이 있는 최대로우의 값인데 range는 1작게 나오니까 +1 함 

@@ -1,5 +1,5 @@
 from openpyxl import load_workbook
-wb = load_workbook("Sample.xlsx")
+wb = load_workbook("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Excel/File/Sample.xlsx")
 ws = wb.active
 
 # 엑셀 삽입 단축키
@@ -13,5 +13,5 @@ ws.insert_rows(8, 5) # 빈 행 5줄 추가
 # B열에 빈 줄 삽입
 ws.insert_cols(2,3) # 빈 열 3줄 추가
 
-wb.save("Sample_Insert.xlsx")
+wb.save("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Excel/File/Sample_Insert.xlsx")
 
