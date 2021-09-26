@@ -1,8 +1,9 @@
 {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "launch": {
     
         "configurations": [],
         "compounds": []
-    }
+    },
+    "python.formatting.provider": "black"
 }
