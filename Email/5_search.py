@@ -1,4 +1,3 @@
-from typing import Tuple
 from imap_tools import MailBox
 from email_data import *
 
