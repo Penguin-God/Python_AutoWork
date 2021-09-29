@@ -6,7 +6,7 @@ msg = EmailMessage()
 
 msg["Subject"] = "python RPA 메일" # 제목
 msg["From"] = EMAIL_ADDRESS # 보내는 사람
-msg["To"] = DAHAN_ADDRESS # 받는 사람
+msg["To"] = EMAIL_ADDRESS # 받는 사람
 msg.set_content("자소서 파일 뽑아줘 다현")
 
 with open("Email/file/자소서.hwp", "rb") as hwp:
