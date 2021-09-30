@@ -30,12 +30,14 @@ from random import *
 
 name_list = ["PenguinGod", "kd", "Goldmetal", "베르", "고라니"]
 
-msg = EmailMessage()
-msg["Subject"] = "유니티 티셔츠 내놔"
-msg["From"] = EMAIL_ADDRESS
-msg["To"] = EMAIL_ADDRESS
+# msg["Subject"] = "유니티 티셔츠 내놔"
+# msg["To"] = EMAIL_ADDRESS
 
-def SendMail(text):
+def SendMail(subject, to, text):
+    msg = EmailMessage()
+    msg["From"] = EMAIL_ADDRESS
+    msg["To"] = to
+    msg["Subject"] = subject
     msg.set_content(text)
     with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
         smtp.ehlo()
@@ -49,6 +51,48 @@ def GetRandomNumber():
         number += str(randint(0, 9))
     return number
 
-for name in name_list:
-    text = name + "/" + GetRandomNumber()
-    SendMail(text)
+# 메일 5개 보내기
+# for name in name_list:
+#     text = name + "/" + GetRandomNumber()
+#     SendMail(text)
+
+winners_datas = []
+
+# 당첨 결과 답장 보내기
+def ReplyMail():
+    with MailBox("imap.gmail.com", 993) as mail_box:
+        mail_box.login(EMAIL_ADDRESS, EMAIL_PASSWORD, initial_folder="INBOX")
+
+        order = 0
+        order_out = 3
+        subject = ""
+        text = ""
+        to = ""
+
+        for mail in mail_box.fetch('SENTSINCE 28-Sep-2021'): # 2021/09/28 부터 온 메일
+            if("유니티 티셔츠 내놔" in mail.subject ):
+                to = mail.from_
+                order += 1
+                if(order <= order_out):
+                    subject = "[선정]"
+                    text = "{}님 축하요 님{} 번째임".format(mail.text.split("/")[0], str(order))
+                else:
+                    subject = "[탈락]"
+                    text = "{}님 유감임 암튼 그럼 참고로 {}번째 빌려서 탈락함".format(mail.text.split("/")[0], str(order - order_out))
+                winners_datas.append([str(order), mail.text.split("/")[0], mail.text.split("/")[1]])
+                SendMail(subject, to, text)
+
+ReplyMail()
+
+# 당첨자 엑셀 파일 만들기
+from openpyxl import Workbook
+wb = Workbook()
+ws = wb.active
+
+ws.append(("번호", "닉네임", "전화번호"))
+# column = x축, row = y축
+for winner_index, winner_data in enumerate(winners_datas):
+    for data_index, data in enumerate(winner_data):
+        ws.cell(column=data_index + 1, row= winner_index + 2, value=winner_data[data_index])
+
+wb.save("project/project_answer.xlsx")
