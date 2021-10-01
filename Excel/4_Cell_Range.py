@@ -23,12 +23,12 @@ rowScore = ws[2:6] # row 2~6번째 줄 데이터 가져옴
 anyRowScore = ws[2:ws.max_row] # row 2 ~ 마지막 줄 까지의 데이터 (값 있는 줄까지)
 # for row in rowScore:
 #     for score in row:
-#         #print(score.value, end=" ")
-#         # coordinate : 동등한, 좌표의, 조정하다
-#         #print(score.coordinate, end=" ") # 데이터의 셀 위치 출력
+#         # print(score.value, end=" ")
+#         # #coordinate : 동등한, 좌표의, 조정하다
+#         # print(score.coordinate, end=" ") # 데이터의 셀 위치 출력
 
 #         xy = coordinate_from_string(score.coordinate)
-#         #print(xy) # 튜플에 담아서 좌표처럼 사용가능
+#         print(xy) # 튜플에 담아서 좌표처럼 사용가능
 #         print(xy[0], end=", ") # column
 #         print(xy[1]) # row
 #     print('\n')
