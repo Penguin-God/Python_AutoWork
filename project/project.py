@@ -18,6 +18,7 @@
 순번    닉네임    전화번호 뒷자리
 
 '''
+
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -51,14 +52,19 @@ def GetRandomNumber():
         number += str(randint(0, 9))
     return number
 
-# 메일 5개 보내기
-# for name in name_list:
-#     text = name + "/" + GetRandomNumber()
-#     SendMail(text)
+#메일 5개 보내기
+def SendFiveMail():
+    for name in name_list:
+        #text = name + "/" + GetRandomNumber()
+        text = "/".join(name, GetRandomNumber()) # 내용 많아지면 .join() 이 좋은듯
+        SendMail(text)
+#SendFiveMail()
+
+
+# 당첨 결과 답장 보내기
 
 winners_datas = []
 
-# 당첨 결과 답장 보내기
 def ReplyMail():
     with MailBox("imap.gmail.com", 993) as mail_box:
         mail_box.login(EMAIL_ADDRESS, EMAIL_PASSWORD, initial_folder="INBOX")
@@ -76,13 +82,14 @@ def ReplyMail():
                 if(order <= order_out):
                     subject = "[선정]"
                     text = "{}님 축하요 님{} 번째임".format(mail.text.split("/")[0], str(order))
+                    winners_datas.append([str(order), mail.text.split("/")[0], mail.text.split("/")[1]])
                 else:
                     subject = "[탈락]"
                     text = "{}님 유감임 암튼 그럼 참고로 {}번째 빌려서 탈락함".format(mail.text.split("/")[0], str(order - order_out))
-                winners_datas.append([str(order), mail.text.split("/")[0], mail.text.split("/")[1]])
                 SendMail(subject, to, text)
 
 ReplyMail()
+
 
 # 당첨자 엑셀 파일 만들기
 from openpyxl import Workbook
@@ -91,8 +98,11 @@ ws = wb.active
 
 ws.append(("번호", "닉네임", "전화번호"))
 # column = x축, row = y축
-for winner_index, winner_data in enumerate(winners_datas):
-    for data_index, data in enumerate(winner_data):
-        ws.cell(column=data_index + 1, row= winner_index + 2, value=winner_data[data_index])
+# for winner_index, winner_data in enumerate(winners_datas):
+#     for data_index, data in enumerate(winner_data):
+#         ws.cell(column=data_index + 1, row= winner_index + 2, value=winner_data[data_index])
+
+for winner_data in winners_datas:
+    ws.append(winner_data)
 
 wb.save("project/project_answer.xlsx")
