@@ -3,6 +3,7 @@ from openpyxl import Workbook
 wb = Workbook()
 ws = wb.active
 
+# formula : 공식, 공식 규격
 ws.column_dimensions["A"].width = 25
 ws["A1"] = datetime.datetime.today() # 오늘 날짜, 시간 정보
 ws["A2"] = "=SUM(1, 5, 22)" # 합
