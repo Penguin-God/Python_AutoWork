@@ -1,7 +1,8 @@
 import pyautogui as auto
 
 # 스크린샷 찍고 저장
-img = auto.screenshot()
+auto.sleep(5)
+img = auto.screenshot() # 현재 활성화된 창을 찍음
 img.save("C:/Users/parkj/Desktop/프로그래밍/python/RPA/Desktop/File/screenshot.png")
 
 #auto.mouseInfo()

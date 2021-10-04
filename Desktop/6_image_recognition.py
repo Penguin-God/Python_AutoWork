@@ -5,8 +5,8 @@ import pyautogui as auto
 # file_menu = auto.locateOnScreen("Desktop/File/file_menu.png")
 # print(file_menu) # 이미지 못찾으면 None 출력
 
-#auto.click(file_menu) # 이미지 위치 가운데 클릭
-#auto.moveTo(file_menu) # 이미지 위치 가운데로 이동
+# auto.click(file_menu) # 이미지 위치 가운데 클릭
+# auto.moveTo(file_menu) # 이미지 위치 가운데로 이동
 
 # pyautogui는 이미지 기반이므로 해상도나 화면이 바뀌면 높은 확률로 실패하기 때문에 실행되었을 때와 같은 환경을 만드는 것이 중요
 
@@ -63,4 +63,4 @@ def Return_Imginfo(filename, timeout):
 
     return edit_menu
 
-auto.click(Return_Imginfo("Desktop/File/edit_menu.png", timeout))
+#auto.click(Return_Imginfo("Desktop/File/edit_menu.png", timeout))

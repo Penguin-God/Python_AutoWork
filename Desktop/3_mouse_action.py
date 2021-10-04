@@ -13,8 +13,8 @@ import pyautogui as auto
 # auto.rightClick() # 우클릭
 # auto.middleClick() # 휠 클릭
 
-#auto.drag(100, 200, duration=2) # 좌표 크기만큼 이동 (너무 빠르면 작동 안함)
-#auto.dragTo(100, 200, duration=2) # 지정한 좌표로  이동
+auto.drag(100, 200, duration=2) # 좌표 크기만큼 드래그하면서 이동 (너무 빠르면 작동 안함)
+auto.dragTo(100, 200, duration=2) # 지정한 좌표로 드래그하면서 이동
 
-auto.scroll(300) # 위 방향으로 300만큼 이동
+auto.scroll(300) # 위 방향으로 300만큼 스크롤
 # 양수는 +, 음수는 -
