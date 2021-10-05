@@ -8,17 +8,17 @@ print(active_window.left, active_window.right,  # 창의 좌표 정보
       active_window.top, active_window.bottom)
 
 # 활성화된 창 기준으로 좌표 구하고 클릭
-auto.click(active_window.left + 60, active_window.top + 20)
+auto.click(active_window.left + 25, active_window.top + 90)
 
-# for window in auto.getAllWindows():
-#     print(window)  # 모든 윈도우 출력
+#for window in auto.getAllWindows():
+#    print(window)  # 모든 윈도우 출력
 
 for w in auto.getWindowsWithTitle("Groove 음악"):  # 해당 이름을 가진 window만 가져옴
     print(w)
 
-name = "파이썬 코딩 무료 강의 (활용편4) - 업무자동화(RPA), 이제는 일하는 척(?)만 하세요 - YouTube - Chrome"
+name = "Chrome"
 youtube = auto.getWindowsWithTitle(name)[0]  # 크롬 탭은 활성화 되있는것만 가져올 수 있음
-
+print(youtube)
 if(youtube.isActive == False):  # 현재 활성화가 되지 않았다면
     youtube.activate()  # window 활성화
 
@@ -36,5 +36,5 @@ youtube.restore()
 
 auto.sleep(1)
 
-youtube.close()  # 크롬 탭 닫으면 그냥 창을 닫아버림
+#youtube.close()  # 크롬 탭 닫으면 그냥 전체 창을 닫아버림
 # 크롬 탭을 하나의 window로 인식하는 것 같음
