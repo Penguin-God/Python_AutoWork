@@ -1,11 +1,11 @@
 import os
 
-# print(os.getcwd()) # current working directory 현재 작업 공간
+print(os.getcwd()) # cws : current working directory (현재 작업 공간)
 # os.chdir("Desktop") # Desktop으로 작업 공간 이동
 # print(os.getcwd())
 # os.chdir("..") # 부모 폴더로 이동
 # print(os.getcwd())
-# os.chdir("../..") # 조부모 폴더로 이동
+# os.chdir("../..") # 조부모 폴더로 이동 (무한 반복 가능)
 # print(os.getcwd())
 # os.chdir("c:/") # 주어진 절대 경로로 이동
 # print(os.getcwd())
@@ -14,13 +14,12 @@ import os
 file_path = os.path.join(os.getcwd(), "Desktop", "File","text_file.txt") # 절대 경로 생성
 print(file_path)
 
-# 파일 경로에서 파일 빼고 폴더 정보만 가져오기
+# 파일 경로에서 파일 빼고 폴더 경로만 가져오기
 forder_path = os.path.dirname(r"C:\Users\parkj\Desktop\프로그래밍\python\RPA\Desktop\File\text_file.txt")
 # r : 이스케이프문 무시하고 문자 그대로 읽기
 print(forder_path)
 
 # 파일 정보 가져오기
-import time
 import datetime
 
 # 파일 생성 날짜 가져오기
