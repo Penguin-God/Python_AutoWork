@@ -47,24 +47,24 @@ print(file_size) # 바이트 단위로 파일 크기 가져옴
 
 
 # 파일 목록 가져오기 (하위 폴더 모두 포함)
-any_files = os.walk("Desktop") # . : 현재 폴더 기준으로
-#print(any_files) # 객체 정보 출력
-#for root, dirs, files in any_files:
-    # 상위 폴더, 상위 폴더에 포함된 폴더, 상위 폴더에 포함된 파일
-#    print(root, dirs, files) 
+# any_files = os.walk("Desktop") # . : 현재 폴더 기준으로
+# print(any_files) # 객체 정보 출력
+# for aa in any_files:
+#     #상위 폴더, 상위 폴더에 포함된 폴더, 상위 폴더에 포함된 파일
+#     print(aa ) 
 
 # 폴더에서 특정 파일 찾기
-# search_name = "11_file_system.py"
-# for root, dirs, files in os.walk("."):
-#     if(search_name in files): # files 안에 search_name이 있으면
-#         print(os.path.join(root, search_name))
+search_name = "11_file_system.py"
+for root, dirs, files in os.walk("."):
+    if(search_name in files): # files 안에 search_name이 있으면
+        print(os.path.join(root, search_name))
 
 import fnmatch
-pattern = "1*.py" # 1로 시작하고 .py로 끝나는 모든 파일
+pattern = "8*.py" # 1로 시작하고 .py로 끝나는 모든 파일
 result = []
 for root, dirs, files in os.walk("."):
     for name in files:
-        if(fnmatch.fnmatch(name, pattern)): # 이름과 패턴이 일치하면
+        if(fnmatch.fnmatch(name, pattern)): # 파일 이름과 패턴이 일치하면
             result.append(os.path.join(root, name))
 
 print(result)
