@@ -1,6 +1,6 @@
 '''
-1. 그림판 실행 후 최대화 win + r 후 mspaint 입력 
-2. 상단의 텍스트 기능을 이용해 흰 영역 아무 곳에나 글자 입력
+1. 그림판 실행 후 최대화 (win + r 후 mspaint 입력해서 메모장 뛰우기)
+2. 상단의 텍스트 클릭 후 폰트를 terminal로 변경 후 흰 영역 아무 곳에나 글자 입력
 3. 5초 대기 후 그림판 종료 이 때 저장하지 않음을 선택
 '''
 
@@ -18,16 +18,19 @@ paint_window = auto.getActiveWindow()
 paint_window.maximize()
 
 # 2. 한국어 글자 입력
+
+# 텍스트 아이콘 클릭
 text_icon = auto.locateOnScreen("Desktop/File/paint_window_text_icon.png")
 auto.click(text_icon)
-
+# 흰 화면 아무곳이나 클릭
 auto.click(paint_window.right - 1000, paint_window.top + 500)
 
-# 보너스 가변적인 이미지일 때 상대 좌표로 작업하기 (글자 폰트 바꾸기)
+# 보너스 가변적인 이미지일 때 상대 좌표로 작업하기 (폰트 목록 클릭)
 text_icon = auto.locateOnScreen("Desktop/File/text_btn.png")
 auto.click(text_icon.left + 155, text_icon.top + 50)
 
 # 원하는 폰트 이미지 찾을 때까지 스크롤하면서 찾기
+# 이미지 찾을 때 시간 개선을 위해 범위 지정
 font_icon = auto.locateOnScreen("Desktop/File/my_font_btn.png", region = (100, 50, 200, 900))
 
 start_time = time.time()
@@ -35,7 +38,7 @@ while font_icon == None:
     auto.scroll(100)
     font_icon = auto.locateOnScreen("Desktop/File/my_font_btn.png", region = (100, 50, 200, 900))
 
-    if(time.time() - start_time > 15):
+    if(time.time() - start_time > 60):
         print("Time Up")
         sys.exit()
 
@@ -52,5 +55,5 @@ auto.hotkey("ctrl", "v")
 # auto.click(1000, 530) # print(auto.position()) 으로 마우스 값 가져옴
 
 paint_window.close()
-auto.sleep(1)
+auto.sleep(5)
 auto.press("n")
