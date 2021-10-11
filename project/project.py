@@ -4,7 +4,7 @@
 
 [신청 메일 양식]
 제목 : 유니티 티셔츠 내놔
-봅문 : 닉네임/전화번호 뒤 4자리
+본문 : 닉네임/전화번호 뒤 4자리
 
 [선정 안내 메일]
 제목 : 추카추카
@@ -96,7 +96,7 @@ from openpyxl import Workbook
 wb = Workbook()
 ws = wb.active
 
-ws.append(("번호", "닉네임", "전화번호"))
+ws.append(("당첨 번호", "닉네임", "전화번호"))
 # column = x축, row = y축
 # for winner_index, winner_data in enumerate(winners_datas):
 #     for data_index, data in enumerate(winner_data):

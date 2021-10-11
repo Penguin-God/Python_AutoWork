@@ -19,6 +19,7 @@ for msg in mail_box.fetch(limit=1, reverse=True):
 
     # 첨부파일
     print(len(msg.attachments))
+    # msg.attachments : 첨부파일을 모두 가져온다
     for att in msg.attachments: # 메일의 파일들
         print("파일 이름 : ", att.filename)
         print("타입 : ", att.content_type)
@@ -26,7 +27,7 @@ for msg in mail_box.fetch(limit=1, reverse=True):
 
         #파일 다운로드
         with open("자소서.hwp", "wb") as f: # 이름이 주소라서 그냥 filename 쓰면 안될 수도 있음 
-            f.write(att.payload)
+            f.write(att.payload) # payload : 파일에다가 첨부파일를 옮긴다. 
             print("첨부 파일 {} 다운로드".format(att.filename))
 
 mail_box.logout()

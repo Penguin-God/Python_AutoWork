@@ -23,7 +23,7 @@ with MailBox("imap.gmail.com", 993) as mail_box:
     # 어떤 글자를 포함하는 메일 (제목, 본문)
     # '' 로 먼저 감싸고 실제로 찾을 텍스트는 ""로 감싸야 함 
     # 뛰어쓰기로 구분하여 만나보세요, unity 각각의 단어가 포함된 메일을 찾음 (한국어는 안됨)
-    # for mail in mail_box.fetch('(TEXT "hi unity")', reverse=True): 
+    # for mail in mail_box.fetch('(TEXT "Overflow")', reverse=True): 
     #     print("[{}] : {}".format(mail.from_, mail.subject))
 
 
